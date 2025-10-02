@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家族のためのシニア向け認知機能サポート</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fafafa;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            line-height: 1.9;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 22px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.4);
+        }
+
+        .cta-button::before {
+            content: '👉 ';
+            margin-right: 8px;
+        }
+
+        .cta-subtext {
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        /* 共感セクション */
+        .empathy {
+            background: white;
+            padding: 80px 20px;
+            margin-top: -40px;
+            border-radius: 30px 30px 0 0;
+            position: relative;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #667eea;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .concerns-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .concerns-list li {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            padding: 25px 30px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            font-size: 1.15rem;
+            position: relative;
+            padding-left: 60px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .concerns-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .concerns-list li::before {
+            content: '💭';
+            position: absolute;
+            left: 20px;
+            font-size: 1.8rem;
+        }
+
+        .empathy-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 50px;
+            line-height: 2;
+        }
+
+        .empathy-highlight {
+            background: linear-gradient(transparent 60%, #fff3cd 60%);
+            font-weight: 700;
+            padding: 2px 5px;
+            color: #667eea;
+        }
+
+        /* 特徴セクション */
+        .features {
+            background: linear-gradient(180deg, #f8f9fa 0%, white 100%);
+            padding: 80px 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102,126,234,0.15);
+            border-color: #667eea;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* ベネフィットセクション */
+        .benefits {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .benefits .section-title {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .benefits-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 50px;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefit-item {
+            background: rgba(255,255,255,0.15);
+            padding: 30px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.05);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .benefit-text {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* 最終CTAセクション */
+        .final-cta {
+            background: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .final-cta-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 40px;
+            border-radius: 25px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .final-cta h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 35px;
+            line-height: 1.9;
+        }
+
+        .urgency-text {
+            background: #fff3cd;
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #856404;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .cta-button {
+                padding: 20px 45px;
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .concerns-list li {
+                font-size: 1rem;
+                padding: 20px 20px 20px 55px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta-box {
+                padding: 40px 25px;
+            }
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .cta-button {
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            animation: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">✨ 無料プレゼント実施中</div>
+            <h1 class="hero-title">家族のための<br>シニア向け認知機能サポート</h1>
+            <h2>家族の安心を守る、暮らしの工夫をまとめました</h2>
+            <p>
+                介護やサポートに不安を感じていませんか？<br>
+                今日から取り入れられる "安心の工夫" を<br class="sp-only">無料チェックリストでお届けします。
+            </p>
+            <a href="#" class="cta-button">無料でチェックリストを受け取る</a>
+            <span class="cta-subtext">※メールアドレスの登録だけで今すぐダウンロード</span>
+        </div>
+    </section>
+
+    <!-- 共感セクション -->
+    <section class="empathy">
+        <div class="container">
+            <h2 class="section-title">こんな悩みはありませんか？</h2>
+            <ul class="concerns-list">
+                <li>家族のために何をしたらいいのかわからない</li>
+                <li>介護の負担で心身が疲れている</li>
+                <li>将来が不安で知識が欲しい</li>
+            </ul>
+            <p class="empathy-text">
+                そんな方のために、<span class="empathy-highlight">日常でできる工夫</span>をまとめました。
+            </p>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">このチェックリストで得られること</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/hokutomiyazaki-arch/brain-cognition-support/main/14.png" alt="脳トレをするシニア" class="feature-image">
+                    <h3 class="feature-title">📝 実践的な脳トレ方法</h3>
+                    <p class="feature-text">毎日続けられる簡単な脳トレーニング。楽しみながら認知機能をサポートする方法をご紹介します。</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/hokutomiyazaki-arch/brain-cognition-support/main/15.png" alt="脳の健康" class="feature-image">
+                    <h3 class="feature-title">🧠 科学的根拠に基づく知識</h3>
+                    <p class="feature-text">最新の研究に基づいた、脳の健康を守るための具体的なアプローチをわかりやすく解説します。</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://raw.githubusercontent.com/hokutomiyazaki-arch/brain-cognition-support/main/16.png" alt="専門家のアドバイス" class="feature-image">
+                    <h3 class="feature-title">👨‍⚕️ 専門家監修の内容</h3>
+                    <p class="feature-text">介護・福祉の専門家が監修した信頼できる情報で、安心して実践できるサポート方法をお届けします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ベネフィットセクション -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">今すぐ始められる3つの理由</h2>
+            <p class="benefits-subtitle">明日からではなく、今日から家族の安心を</p>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <h3 class="benefit-title">すぐに使える</h3>
+                    <p class="benefit-text">難しい知識は不要。今日から実践できる内容だけをまとめています</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💝</span>
+                    <h3 class="benefit-title">完全無料</h3>
+                    <p class="benefit-text">費用は一切かかりません。メールアドレスだけでダウンロード可能</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎯</span>
+                    <h3 class="benefit-title">実績のある方法</h3>
+                    <p class="benefit-text">多くの家族が実践して効果を実感している方法を厳選</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTAセクション -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta-box">
+                <h2>家族の笑顔を守るために<br>今すぐ行動を</h2>
+                <p>
+                    「もっと早く知っていれば...」<br>
+                    そう後悔する前に、今できることから始めませんか？
+                </p>
+                <a href="#" class="cta-button">無料でチェックリストを受け取る</a>
+                <div class="urgency-text">🎁 今だけ！特典として専門家との相談会ご招待</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
