@@ -28,7 +28,7 @@
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 80px 20px 100px;
+            padding: 60px 20px 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -64,7 +64,7 @@
         .hero-title {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.4;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
@@ -73,7 +73,7 @@
             max-width: 400px;
             width: 100%;
             height: auto;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             display: block;
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
         }
@@ -81,13 +81,13 @@
         .hero h2 {
             font-size: 1.6rem;
             font-weight: 500;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             opacity: 0.95;
         }
 
         .hero p {
             font-size: 1.15rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             line-height: 1.9;
             opacity: 0.9;
             max-width: 700px;
@@ -344,21 +344,39 @@
 
         /* レスポンシブ */
         @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px 50px;
+            }
+
             .hero-title {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+                margin-bottom: 12px;
             }
 
             .hero-logo {
-                max-width: 280px;
+                max-width: 240px;
+                margin-bottom: 15px;
             }
 
             .hero h2 {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                margin-bottom: 25px;
+                line-height: 1.8;
             }
 
             .cta-button {
-                padding: 20px 45px;
-                font-size: 1.1rem;
+                padding: 18px 35px;
+                font-size: 1.05rem;
+            }
+
+            .cta-subtext {
+                font-size: 0.8rem;
+                margin-top: 12px;
             }
 
             .section-title {
@@ -380,6 +398,10 @@
 
             .final-cta-box {
                 padding: 40px 25px;
+            }
+
+            .empathy {
+                padding: 60px 20px;
             }
         }
 
@@ -427,7 +449,8 @@
             <h2>家族の安心を守る、暮らしの工夫をまとめました</h2>
             <p>
                 介護やサポートに不安を感じていませんか？<br>
-                今日から取り入れられる "安心の工夫" を<br class="sp-only">無料チェックリストでお届けします。
+                今日から取り入れられる "安心の工夫" を<br>
+                無料チェックリストでお届けします。
             </p>
             <a href="#" class="cta-button">無料でチェックリストを受け取る</a>
             <span class="cta-subtext">※メールアドレスの登録だけで今すぐダウンロード</span>
